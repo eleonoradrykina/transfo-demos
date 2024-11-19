@@ -3,7 +3,10 @@ import { useControls } from 'leva'
 
 export default function MapModel() {
 
-const mapAngle = useControls('Map',{
+//the furtherst 1.24
+//the closest 0.7
+
+const mapControls = useControls('Map',{
     mapAngle: {
         value: 0,
         min: -3.14,
@@ -17,7 +20,7 @@ const mapAngle = useControls('Map',{
 
     return (
         <>
-         <primitive object={model.scene} scale={ 1.0 } rotation-y={-Math.PI*0.2}  />
+         <primitive object={model.scene} scale={ 1.0 } rotation-y={mapControls.mapAngle} position = {[0, 0, 0]} />
         </>
     )
 

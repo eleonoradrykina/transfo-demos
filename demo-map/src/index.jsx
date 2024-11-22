@@ -1,18 +1,24 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
+import { CineonToneMapping } from 'three'
 import './index.css'
 
 import Experience from './Experience'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-       <Canvas
+       <Canvas 
+      //  flat
         shadows
+        gl= { { 
+            // antialias: true,
+             toneMappingExposure: 0.5
+        } }
         camera={ {
             fov: 45,
             near: 0.1,
-            far: 200,
+            far: 100,
             position: [ 2, 5, 10 ]
         } }
     >

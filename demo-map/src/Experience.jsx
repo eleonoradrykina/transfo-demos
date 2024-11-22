@@ -1,9 +1,15 @@
 import { OrbitControls, Html } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import MapModel from './MapModel'
-import MainBuilding from './MainBuilding'
+import MachineZaal from './MachineZaal'
+import Mechaniekers from './Mechaniekers'
+import Ketelhuis from './Ketelhuis'
 import { useRef, useState, useEffect } from 'react'
 import { useControls } from 'leva'
+
+import { ToneMapping, EffectComposer, Bloom, DepthOfField } from '@react-three/postprocessing'
+import { ToneMappingMode, BlendFunction } from 'postprocessing'
+
 
 
 export default function Experience() {
@@ -80,6 +86,14 @@ export default function Experience() {
 })
     return (
         <>
+        <EffectComposer>
+            <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} />
+            <Bloom luminanceThreshold={ 0.3 } mipmapBlur/>
+            {/* <DepthOfField 
+                    focusDistance={0.06}
+                    focalLength={0.02}
+                    bokehScale={8} /> */}
+        </EffectComposer>
         <Perf position="top-left"/>
         <OrbitControls 
            minDistance={cameraControls.minDistance}
@@ -101,17 +115,15 @@ export default function Experience() {
             shadow-normalBias={ 0.75 }
             position={ [ 4, 6, 6 ] } 
             intensity={ 1.5 }  /> */}
-        <ambientLight/>
+        <ambientLight
+        intensity={1.0} />
        {isReady && (
         <directionalLightHelper args={[dirLight.current, 2, 0xff0000]} />
       )}
-        <MainBuilding rotation-y={ - Math.PI * 0.2} position = {[0.5, 0, 1.2]} />
+        <MachineZaal />
         <MapModel />
-        <mesh position = {[0, 0, 0]}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshBasicMaterial color="red" />
-        </mesh>
-
+        <Mechaniekers />
+        <Ketelhuis />
         </>
     )
     }   

@@ -15,8 +15,8 @@ const mapControls = useControls('Map',{
     },
 })
 
-    // const model = useGLTF('./models/map-bachelors-full.glb')
-    const model = useGLTF('./models/map-bachelors.glb')
+    const model = useGLTF('./models/map-without-interactive.glb')
+    // const model = useGLTF('./models/compressed_map-without-interactive-buildings.glb')
 
     return (
         <>
@@ -26,5 +26,5 @@ const mapControls = useControls('Map',{
 
 }
 
-// useGLTF.preload('./models/map-bachelors-full.glb')
-useGLTF.preload('./models/map-bachelors.glb')
+useGLTF.preload('./models/map-without-interactive.glb')
+// useGLTF.preload('./models/map-bachelors.glb')

@@ -25,7 +25,9 @@ colorMap.flipY = false
           material={materials.building}
         >
           <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
         <mesh
           castShadow
@@ -34,7 +36,9 @@ colorMap.flipY = false
           material={materials.roof}
         >
           <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
       </group>
     </group>

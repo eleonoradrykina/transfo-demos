@@ -6,7 +6,7 @@ import Mechaniekers from './Mechaniekers'
 import Ketelhuis from './Ketelhuis'
 import { useRef, useState, useEffect } from 'react'
 import { useControls } from 'leva'
-
+import { useThree } from '@react-three/fiber'
 import { ToneMapping, EffectComposer, Bloom, DepthOfField } from '@react-three/postprocessing'
 import { ToneMappingMode, BlendFunction } from 'postprocessing'
 
@@ -14,13 +14,29 @@ import { ToneMappingMode, BlendFunction } from 'postprocessing'
 
 export default function Experience() {
 
-    const dirLight = useRef()
-    const [isReady, setIsReady] = useState(false)
-  useEffect(() => {
-    if (dirLight.current) {
-      setIsReady(true)
-    }
-  })
+    let selectedMeshes = null
+
+    const clearSelection = (meshes) => {
+    console.log('clearSelection')
+    //turn off the light:
+    if (meshes) {
+        meshes.forEach(mesh => {
+            mesh.material.emissiveIntensity = 0
+        })
+    }   
+  }
+
+  const handleBuildingClick = (e) => {
+    e.stopPropagation()
+    clearSelection(selectedMeshes)
+    const newMeshes =  e.eventObject.children[0].children
+    //light up the building:
+    newMeshes.forEach(mesh => {
+      mesh.material.emissiveIntensity = 3
+    })
+
+    selectedMeshes = newMeshes
+  }
 
   const cameraControls = useControls('Camera',{
     minDistance: {
@@ -88,7 +104,9 @@ export default function Experience() {
         <>
         <EffectComposer>
             <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} />
-            <Bloom luminanceThreshold={ 0.3 } mipmapBlur/>
+            <Bloom luminanceThreshold={ 0.3 } 
+            mipmapBlur 
+            intensity={ 1.5 }/>
             {/* <DepthOfField 
                     focusDistance={0.06}
                     focalLength={0.02}
@@ -107,6 +125,7 @@ export default function Experience() {
            maxSpeed = {cameraControls.maxSpeed}
            azimuthRotateSpeed = {cameraControls.azimuthRotateSpeed}
            dampingFactor = {0.1}
+           target={selectedMeshes ? selectedMeshes[0].position : null}
            />
 
         {/* <directionalLight
@@ -117,13 +136,10 @@ export default function Experience() {
             intensity={ 1.5 }  /> */}
         <ambientLight
         intensity={1.0} />
-       {isReady && (
-        <directionalLightHelper args={[dirLight.current, 2, 0xff0000]} />
-      )}
-        <MachineZaal />
         <MapModel />
-        <Mechaniekers />
-        <Ketelhuis />
+        <MachineZaal onClick={handleBuildingClick} />
+        <Mechaniekers onClick={handleBuildingClick} />
+        <Ketelhuis onClick={handleBuildingClick} />
         </>
     )
     }   

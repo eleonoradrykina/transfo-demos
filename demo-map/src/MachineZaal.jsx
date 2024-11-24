@@ -13,7 +13,7 @@ export default function MachineZaal(props) {
  const colorMap = useLoader(TextureLoader, './models/textures/machinezaal-baked.jpg')
  colorMap.flipY = false
 
- const isClicked = useRef(false)
+//  const isClicked = useRef(true)
 
   return (
     <group {...props} dispose={null} >
@@ -22,7 +22,6 @@ export default function MachineZaal(props) {
         rotation={[0, -1.568, 0]}
         scale={[1.293, 0.597, 0.331]}>
         <mesh
-          onClick={() => isClicked.current = !isClicked.current}
           castShadow
           receiveShadow
           geometry={nodes.Cube002.geometry}
@@ -31,7 +30,7 @@ export default function MachineZaal(props) {
           <meshStandardMaterial 
           map={ colorMap} 
           emissive="#BC78FF" 
-          emissiveIntensity={ isClicked.current ? 3 : 0 }
+          emissiveIntensity={ 0 }
           toneMapped= { false } 
           />
         </mesh>
@@ -44,7 +43,7 @@ export default function MachineZaal(props) {
           <meshStandardMaterial 
           map={colorMap} 
           emissive="#BC78FF" 
-          emissiveIntensity={ isClicked.current ? 3 : 0 }
+          emissiveIntensity={ 0 }
           toneMapped= { false } />
         </mesh>
       </group>

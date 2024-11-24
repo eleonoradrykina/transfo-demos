@@ -22,7 +22,9 @@ export default function Ketelhuis(props) {
           material={materials.building}
         >
         <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
         <mesh
           castShadow
@@ -31,7 +33,9 @@ export default function Ketelhuis(props) {
           material={materials.roof}
         >
         <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
         <mesh
           castShadow
@@ -42,7 +46,9 @@ export default function Ketelhuis(props) {
           scale={[0.38, 0.882, 0.923]}
         >
         <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
         <mesh
           castShadow
@@ -53,7 +59,9 @@ export default function Ketelhuis(props) {
           rotation={[0, 0.005, 0]}
         >
         <meshStandardMaterial 
-          map={colorMap} />
+          map={colorMap}
+          emissive="#BC78FF" 
+          emissiveIntensity={ 0 } />
         </mesh>
       </group>
     </group>

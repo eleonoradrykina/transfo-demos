@@ -19,13 +19,37 @@ body,
   user-select: none;
 }
 
-.mapPin__name {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0;
+
+.building-label {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  text-transform: lowercase;
+  color: #fff;
+  text-align: center;
 }
 
-.mapPin__desc {
-  font-size: 0.75rem;
-  margin: 0;
+.building-label::after {
+  content: '';
+  display: block;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.building-label::before {
+  content: '';
+  display: block;
+  height: 1rem;
+  width: 2px;
+  background: #fff;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

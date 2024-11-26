@@ -2,6 +2,9 @@ import { OrbitControls, Html } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
 import MapModel from './MapModel'
+import Ground from './interactiveBuildings/Ground'
+import OfficeBuilding from './OfficeBuilding'
+/* Interactive buldings:*/
 import Hoofdzaal from './interactiveBuildings/Hoofdzaal'
 import Mechaniekers from './interactiveBuildings/Mechaniekers'
 import Ketelhuis from './interactiveBuildings/Ketelhuis'
@@ -10,6 +13,7 @@ import Octagon from './interactiveBuildings/Octagon'
 import Kunstacademie from './interactiveBuildings/Kunstacademie'
 import Duiktank from './interactiveBuildings/Duiktank'
 import Watertoren from './interactiveBuildings/Watertoren'
+import Plong from './interactiveBuildings/Plong'
 
 import { useRef, useState, useEffect } from 'react'
 import { useControls } from 'leva'
@@ -156,14 +160,15 @@ export default function Experience() {
     return (
         <>
         <EffectComposer>
-            <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} />
+
             <Bloom luminanceThreshold={ 0.4 } 
             mipmapBlur 
-            intensity={ 1.5 }/>
+            intensity={ 1.8 }/>
             {/* <DepthOfField 
                     focusDistance={0.06}
                     focalLength={0.02}
                     bokehScale={8} /> */}
+            <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} />
         </EffectComposer>
         <Perf position="top-left"/>
         <OrbitControls 
@@ -182,7 +187,8 @@ export default function Experience() {
            />
         <ambientLight
         intensity={1.0} />
-        <MapModel onClick={clearSelection}/>
+        <Ground />
+        <MapModel />
         <Hoofdzaal onClick={(e) => handleBuildingClick(e, "Hoofdzaal")} label="Hoofdzaal" />
         <Mechaniekers onClick={(e) => handleBuildingClick(e, "Mechaniekers")} label="Mechaniekers" />
         <Ketelhuis onClick={(e) => handleBuildingClick(e, "Ketelhuis")} label="Ketelhuis" />
@@ -191,6 +197,8 @@ export default function Experience() {
         <Kunstacademie onClick={(e) => handleBuildingClick(e, "Kunstacademie")} label="Kunstacademie" />
         <Duiktank onClick={(e) => handleBuildingClick(e, "Duiktank")} label="Duiktank" />
         <Watertoren onClick={(e) => handleBuildingClick(e, "Watertoren")} label="Watertoren" />
+        <Plong onClick={(e) => handleBuildingClick(e, "Plong")} label="Plong" />
+        <OfficeBuilding />
         </>
     )
     }   

@@ -31,6 +31,8 @@ colorMap.flipY = false
               <p className='building-label'>{props.label}</p>
             </Html>
           <meshStandardMaterial 
+          roughness={1}
+          metalness={0}
           map={colorMap}
           emissive="#BC78FF" 
           emissiveIntensity={ 0 } />

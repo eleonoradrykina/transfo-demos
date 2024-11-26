@@ -19,8 +19,8 @@ export default function Octagon(props) {
         castShadow
         receiveShadow
         geometry={nodes.Cube018.geometry}
-        position={[0, -0.066, 0.297]}
-        rotation={[0, -0.366, -Math.PI]}
+        position={[0.1, 0.14, 0.26]}
+        rotation={[0, 0.4, -Math.PI]}
         scale={[-0.109, -0.151, -0.075]}
       >
         <meshStandardMaterial 

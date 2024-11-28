@@ -6,12 +6,13 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { SRGBColorSpace } from 'three'
 
 export default function Plong(props) {
   const { nodes } = useGLTF('./models/plong.glb')
   const colorMap = useLoader(TextureLoader, './models/textures/plong-baked.jpg')
   colorMap.flipY = false
-
+  colorMap.colorSpace = SRGBColorSpace
   return (
     <group {...props} dispose={null}>
      <group>

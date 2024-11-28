@@ -6,15 +6,15 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { SRGBColorSpace } from 'three'
 
 
 
 export default function MapModel(props) {
-  const { nodes, materials } = useGLTF('./models/static-map-bachelors.glb')
+  const { nodes} = useGLTF('./models/static-map-bachelors.glb')
   const colorMap = useLoader(TextureLoader, './models/textures/final-bake.jpg')
-  const officeBuildingColorMap = useLoader(TextureLoader, './models/textures/office-building-baked.jpg')
   colorMap.flipY = false
-
+  colorMap.colorSpace = SRGBColorSpace
   return (
     <group {...props} dispose={null}>
       <mesh

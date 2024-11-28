@@ -2,11 +2,13 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { SRGBColorSpace } from 'three'
 
 export default function Ground(props) {
-  const { nodes, materials } = useGLTF('./models/ground.glb')
+  const { nodes} = useGLTF('./models/ground.glb')
   const groundColorMap = useLoader(TextureLoader, './models/textures/ground.jpg')
   groundColorMap.flipY = false
+  groundColorMap.colorSpace = SRGBColorSpace
 
   return (
     <group {...props} dispose={null}>

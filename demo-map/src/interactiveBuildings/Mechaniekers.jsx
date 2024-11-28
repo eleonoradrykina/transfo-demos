@@ -6,11 +6,13 @@ import React from 'react'
 import { useGLTF, Html } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { SRGBColorSpace } from 'three'
 
 export default function Mechaniekers(props) {
 const { nodes, materials } = useGLTF('./models/mechaniekers.glb')
 const colorMap = useLoader(TextureLoader, './models/textures/mechaniekers-baked.jpg')
 colorMap.flipY = false
+colorMap.colorSpace = SRGBColorSpace
 
   return (
     <group {...props} dispose={null}>

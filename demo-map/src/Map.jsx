@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
-import { CineonToneMapping } from 'three'
+import * as THREE from 'three'
 import { Leva } from 'leva'
 import { Bvh } from '@react-three/drei'
 import './index.css'
@@ -14,8 +14,9 @@ export default function Map() {
     <>
       <Leva collapsed />
        <Canvas 
-       //  flat
-        shadows
+
+        // onCreated={({ gl }) => { gl.toneMapping = THREE.NoToneMapping }}
+        flat
         gl= { { 
             // antialias: true,
              toneMappingExposure: 0.5

@@ -1,9 +1,13 @@
 import { OrbitControls, Html } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
-import MapModel from './MapModel'
-import Ground from './interactiveBuildings/Ground'
-import OfficeBuilding from './OfficeBuilding'
+/* Non interactive map:*/
+import MapModel from './nonInteractiveMap/MapModel'
+import Ground from './nonInteractiveMap/Ground'
+import OfficeBuilding from './nonInteractiveMap/OfficeBuilding'
+import Path from './nonInteractiveMap/Path'
+import Trees from './nonInteractiveMap/Trees'
+
 /* Interactive buldings:*/
 import Hoofdzaal from './interactiveBuildings/Hoofdzaal'
 import Mechaniekers from './interactiveBuildings/Mechaniekers'
@@ -160,15 +164,10 @@ export default function Experience() {
     return (
         <>
         <EffectComposer>
-
             <Bloom luminanceThreshold={ 0.4 } 
             mipmapBlur 
-            intensity={ 1.8 }/>
-            {/* <DepthOfField 
-                    focusDistance={0.06}
-                    focalLength={0.02}
-                    bokehScale={8} /> */}
-            <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} />
+            intensity={ 1.6 }/>
+            {/* <ToneMapping mode= {ToneMappingMode.OPTIMIZED_CINEON} /> */}
         </EffectComposer>
         <Perf position="top-left"/>
         <OrbitControls 
@@ -188,7 +187,9 @@ export default function Experience() {
         <ambientLight
         intensity={1.0} />
         <Ground />
+        <Trees />
         <MapModel />
+        <Path intensity={0.5} />
         <Hoofdzaal onClick={(e) => handleBuildingClick(e, "Hoofdzaal")} label="Hoofdzaal" />
         <Mechaniekers onClick={(e) => handleBuildingClick(e, "Mechaniekers")} label="Mechaniekers" />
         <Ketelhuis onClick={(e) => handleBuildingClick(e, "Ketelhuis")} label="Ketelhuis" />
